@@ -1,2 +1,2 @@
 # Photometric-Redshifts
-infer the redshifts in photometry
+Infer the redshifts in photometry
