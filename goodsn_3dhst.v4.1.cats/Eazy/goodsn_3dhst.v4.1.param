@@ -1,0 +1,131 @@
+################   Run parameters (can feed this file back to EAZY)  ####################
+## Filters
+FILTERS_RES          eazy-photoz/filters/FILTER.RES.latest # Filter transmission data
+FILTER_FORMAT        1                  # Format of FILTERS_RES file -- 0: energy-  1: photon-counting detector
+SMOOTH_FILTERS       0                  # Smooth filter curves with Gaussian
+SMOOTH_SIGMA         100.00             # Gaussian sigma (in Angstroms) to smooth filters
+
+## Templates
+TEMPLATES_FILE       ./templates/tweak_cosmos_v4/spectra.param # Template definition file
+TEMPLATE_COMBOS      99                 # Template combination options: 
+NMF_TOLERANCE        1.00e-04           # Tolerance for non-negative combinations (TEMPLATE_COMBOS=a)
+WAVELENGTH_FILE      templates/EAZY_v1.1_lines/lambda_v1.1.def # Wavelength grid definition file
+TEMP_ERR_FILE        templates/TEMPLATE_ERROR.eazy_v1.0 # Template error definition file
+TEMP_ERR_A2          0.500              # Template error amplitude
+SYS_ERR              0.020              # Systematic flux error (% of flux)
+APPLY_IGM            1                  # Apply Madau 1995 IGM absorption
+SCALE_2175_BUMP      0.000              # Scaling of 2175A bump.  Values 0.13 (0.27) absorb ~10 (20) % at peak.
+
+DUMP_TEMPLATE_CACHE  0                  # Write binary template cache
+USE_TEMPLATE_CACHE   0                  # Load in template cache
+CACHE_FILE           goodsn_3dhst.v4.1.tempfilt # Template cache file (in OUTPUT_DIRECTORY)
+
+## Input Files
+CATALOG_FILE         goodsn_3dhst.v4.1.cat # Catalog data file
+MAGNITUDES           0                  # Catalog photometry in magnitudes rather than f_nu fluxes
+NOT_OBS_THRESHOLD    -90.000            # Ignore flux point if <NOT_OBS_THRESH
+N_MIN_COLORS         5                  # Require N_MIN_COLORS to fit
+
+## Output Files
+OUTPUT_DIRECTORY     goodsn_3dhst.v4.1  # Directory to put output files in
+MAIN_OUTPUT_FILE     goodsn_3dhst.v4.1  # Main output file, .zout
+PRINT_ERRORS         1                  # Print 68, 95 and 99% confidence intervals
+CHI2_SCALE           1.000              # Scale ML Chi-squared values to improve confidence intervals
+VERBOSE_LOG          1                  # Dump information from the run into [MAIN_OUTPUT_FILE].param
+OBS_SED_FILE         0                  # Write out observed SED/object, .obs_sed
+TEMP_SED_FILE        0                  # Write out best template fit/object, .temp_sed
+POFZ_FILE            0                  # Write out Pofz/object, .pz
+BINARY_OUTPUT        1                  # Save OBS_SED, TEMP_SED, PZ in binary format to read with e.g IDL
+
+## Redshift / Mag prior
+APPLY_PRIOR          1                  # Apply apparent magnitude prior
+PRIOR_FILE           templates/prior_K_zmax7.dat # File containing prior grid
+PRIOR_FILTER         226                # Filter from FILTER_RES corresponding to the columns in PRIOR_FILE
+PRIOR_ABZP           25.000             # AB zeropoint of fluxes in catalog.  Needed for calculating apparent mags!
+
+## Redshift Grid
+FIX_ZSPEC            0                  # Fix redshift to catalog zspec
+Z_MIN                0.010              # Minimum redshift
+Z_MAX                6.000              # Maximum redshift
+Z_STEP               0.010              # Redshift step size
+Z_STEP_TYPE          1                  #  0 = ZSTEP, 1 = Z_STEP*(1+z)
+
+## Zeropoint Offsets
+GET_ZP_OFFSETS       0                  # Look for zphot.zeropoint file and compute zeropoint offsets
+ZP_OFFSET_TOL        1.000e-04          # Tolerance for iterative fit for zeropoint offsets [not implemented]
+
+## Rest-frame colors
+REST_FILTERS         --,--              # Comma-separated list of rest frame filters to compute
+                     1000               # 
+                     0                  # 
+Z_COLUMN             z_peak             # Redshift to use for rest-frame color calculation (z_a, z_p, z_m1, z_m2, z_peak)
+USE_ZSPEC_FOR_REST   1                  # Use z_spec when available for rest-frame colors
+READ_ZBIN            no                 # Get redshifts from OUTPUT_DIRECTORY/MAIN_OUTPUT_FILE.zbin rather than fitting them.
+
+## Cosmology
+H0                   70.000             # Hubble constant (km/s/Mpc)
+OMEGA_M              0.300              # Omega_matter
+OMEGA_L              0.700              # Omega_lambda
+#
+####################################
+#
+#  Filter #1, RES#205: hst/wfc3/IR/f160w.dat - lambda_c=15418.990090
+#       [flux col: 9, error col.: 10]
+#  Filter #2, RES#227: NOAO/k1001bp_jul04.txt - lambda_c=3598.268497
+#       [flux col: 12, error col.: 13]
+#  Filter #3, RES#233: hst/ACS_update_sep07/wfc_f435w_t81.dat - lambda_c=4328.682753
+#       [flux col: 15, error col.: 16]
+#  Filter #4, RES#114: CAPAK_v2/B_subaru.res - lambda_c=4458.276253
+#       [flux col: 18, error col.: 19]
+#  Filter #5, RES#229: LRIS/g_blue_transmission.dat - lambda_c=4758.068747
+#       [flux col: 21, error col.: 22]
+#  Filter #6, RES#115: CAPAK_v2/V_subaru.res - lambda_c=5477.746735
+#       [flux col: 24, error col.: 25]
+#  Filter #7, RES#236: hst/ACS_update_sep07/wfc_f606w_t81.dat - lambda_c=5959.323984
+#       [flux col: 27, error col.: 28]
+#  Filter #8, RES#116: CAPAK_v2/r_subaru.res - lambda_c=6288.552034
+#       [flux col: 30, error col.: 31]
+#  Filter #9, RES#231: LRIS/Rs_LRISred_transmission.dat - lambda_c=6832.302412
+#       [flux col: 33, error col.: 34]
+#  Filter #10, RES#117: CAPAK_v2/i_subaru.res - lambda_c=7683.701378
+#       [flux col: 36, error col.: 37]
+#  Filter #11, RES#238: hst/ACS_update_sep07/wfc_f775w_t81.dat - lambda_c=7704.696668
+#       [flux col: 39, error col.: 40]
+#  Filter #12, RES#118: CAPAK_v2/z_subaru.res - lambda_c=9036.758778
+#       [flux col: 42, error col.: 43]
+#  Filter #13, RES#240: hst/ACS_update_sep07/wfc_f850lp_t81.dat - lambda_c=9048.604048
+#       [flux col: 45, error col.: 46]
+#  Filter #14, RES#203: hst/wfc3/IR/f125w.dat - lambda_c=12500.852601
+#       [flux col: 48, error col.: 49]
+#  Filter #15, RES#224: MOIRCS/J277.txt - lambda_c=12525.763795
+#       [flux col: 51, error col.: 52]
+#  Filter #16, RES#204: hst/wfc3/IR/f140w.dat - lambda_c=13971.049843
+#       [flux col: 54, error col.: 55]
+#  Filter #17, RES#225: MOIRCS/H117.txt - lambda_c=16367.526435
+#       [flux col: 57, error col.: 58]
+#  Filter #18, RES#226: MOIRCS/Ks_rot1707wedged120K.txt - lambda_c=21595.153922
+#       [flux col: 60, error col.: 61]
+#  Filter #19, RES#18: IRAC/irac_tr1_2004-08-09.dat - lambda_c=35634.260329
+#       [flux col: 63, error col.: 64]
+#  Filter #20, RES#19: IRAC/irac_tr2_2004-08-09.dat - lambda_c=45110.187072
+#       [flux col: 66, error col.: 67]
+#  Filter #21, RES#20: IRAC/irac_tr3_2004-08-09.dat - lambda_c=57593.122912
+#       [flux col: 69, error col.: 70]
+#  Filter #22, RES#21: IRAC/irac_tr4_2004-08-09.dat - lambda_c=79594.229270
+#       [flux col: 72, error col.: 73]
+#  Template 1: tweak_cosmos_v4/eazy_v1.1_sed1.dat
+#     1.000000   0.000000   1.000000
+#  Template 2: tweak_cosmos_v4/eazy_v1.1_sed2.dat
+#     1.000000   0.000000   1.000000
+#  Template 3: tweak_cosmos_v4/eazy_v1.1_sed3.dat
+#     1.000000   0.000000   1.000000
+#  Template 4: tweak_cosmos_v4/eazy_v1.1_sed4.dat
+#     1.000000   0.000000   1.000000
+#  Template 5: tweak_cosmos_v4/eazy_v1.1_sed5.dat
+#     1.000000   0.000000   1.000000
+#  Template 6: tweak_cosmos_v4/eazy_v1.1_sed6.dat
+#     1.000000   0.000000   1.000000
+#  Template 7: tweak_cosmos_v4/eazy_v1.1_sed7.dat
+#     1.000000   0.000000   1.000000
+# EAZY $Date: 2013-10-17 18:53:15 -0400 (Thu, 17 Oct 2013) $
+# Took 629 seconds.
