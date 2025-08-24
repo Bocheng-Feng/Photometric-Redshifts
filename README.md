@@ -14,6 +14,6 @@ See [here](https://archive.stsci.edu/hello-universe/3d-hst) for a breif introduc
 1. RF achieves comparable precision to EAZY.
 2. RF tends to slightly overestimate at low redshifts and underestimate at higher redshifts.
 
-![Phot_redshift_scatter](/Users/fengbocheng/Projects/Photometric-Redshifts/figures/Phot_redshift_scatter.png)
+![Phot_redshift_scatter](./figures/Phot_redshift_scatter.png)
 
-More details in this [Google dock](https://archive.stsci.edu/hello-universe/3d-hst).
+More details in this [Google dock](https://docs.google.com/presentation/d/1NWBv9U2w4xrRfZYLDdlZchQIxiUdTPZMiu8d5OxsIoI/edit?slide=id.p#slide=id.p).
